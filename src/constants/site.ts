@@ -31,7 +31,7 @@ export const siteConfig = {
   },
   
   location: {
-    googleMapsUrl: "https://www.google.com/maps?q=-0.0429831,109.3271878",
+    googleMapsUrl: "https://www.google.com/maps/place/Silang+Coffee/@-0.0442545,109.3286523,14z/data=!4m7!3m6!1s0x2e1d59f3b0447aa5:0x9a337acfa5ac2772!4b1!8m2!3d-0.0429831!4d109.3271878!16s%2Fg%2F11qg4k5p8x?hl=en-ID&entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D",
     googleMapsEmbed: "https://maps.google.com/maps?q=-0.0429831,109.3271878&z=17&output=embed",
     address: {
       city: "Pontianak",
