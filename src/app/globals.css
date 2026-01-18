@@ -1,26 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Silang Kopi Brand Colors */
+    --background: 24 33% 95%; /* Cream #F5EBE0 */
+    --foreground: 12 50% 36%; /* Deep Terracotta #8B3D2E */
+
+    --card: 24 33% 95%;
+    --card-foreground: 12 50% 36%;
+
+    --popover: 24 33% 95%;
+    --popover-foreground: 12 50% 36%;
+
+    --primary: 12 50% 36%; /* Deep Terracotta #8B3D2E */
+    --primary-foreground: 24 33% 95%; /* Cream */
+
+    --secondary: 24 25% 88%;
+    --secondary-foreground: 12 50% 36%;
+
+    --muted: 24 20% 90%;
+    --muted-foreground: 12 30% 50%;
+
+    --accent: 20 60% 45%; /* Warm rust accent */
+    --accent-foreground: 24 33% 95%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 24 25% 85%;
+    --input: 24 25% 85%;
+    --ring: 12 50% 36%;
+
+    --radius: 0.5rem;
+
+    /* Custom Silang Kopi tokens */
+    --terracotta: 12 50% 36%;
+    --terracotta-light: 12 45% 45%;
+    --terracotta-dark: 12 55% 28%;
+    --cream: 24 33% 95%;
+    --cream-dark: 24 28% 88%;
+    --espresso: 20 40% 20%;
+    
+    /* Typography */
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(12 50% 36% / 0.15);
+    --shadow-elevated: 0 8px 30px -8px hsl(12 50% 36% / 0.25);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 12 50% 36%;
+    --foreground: 24 33% 95%;
+
+    --card: 12 50% 30%;
+    --card-foreground: 24 33% 95%;
+
+    --popover: 12 50% 30%;
+    --popover-foreground: 24 33% 95%;
+
+    --primary: 24 33% 95%;
+    --primary-foreground: 12 50% 36%;
+
+    --secondary: 12 45% 28%;
+    --secondary-foreground: 24 33% 95%;
+
+    --muted: 12 40% 25%;
+    --muted-foreground: 24 20% 75%;
+
+    --accent: 20 50% 55%;
+    --accent-foreground: 24 33% 95%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 12 40% 30%;
+    --input: 12 40% 30%;
+    --ring: 24 33% 95%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-terracotta: hsl(var(--terracotta));
+  --color-terracotta-light: hsl(var(--terracotta-light));
+  --color-terracotta-dark: hsl(var(--terracotta-dark));
+  --color-cream: hsl(var(--cream));
+  --color-cream-dark: hsl(var(--cream-dark));
+  --color-espresso: hsl(var(--espresso));
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --shadow-soft: var(--shadow-soft);
+  --shadow-elevated: var(--shadow-elevated);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+
+  /* Animations */
+  @keyframes accordion-down {
+    from { height: 0; }
+    to { height: var(--radix-accordion-content-height); }
+  }
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height); }
+    to { height: 0; }
+  }
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+}
+
+@layer components {
+  /* Geometric cross pattern overlay */
+  .cross-pattern {
+    background-image: 
+      linear-gradient(90deg, transparent 49.5%, hsl(var(--cream) / 0.08) 49.5%, hsl(var(--cream) / 0.08) 50.5%, transparent 50.5%),
+      linear-gradient(0deg, transparent 49.5%, hsl(var(--cream) / 0.08) 49.5%, hsl(var(--cream) / 0.08) 50.5%, transparent 50.5%);
+  }
+
+  /* Intersecting grid layout */
+  .intersect-offset-left {
+    margin-left: -1rem;
+  }
+  @media (min-width: 768px) {
+    .intersect-offset-left {
+      margin-left: -2rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .intersect-offset-left {
+      margin-left: -3rem;
+    }
+  }
+
+  .intersect-offset-right {
+    margin-right: -1rem;
+  }
+  @media (min-width: 768px) {
+    .intersect-offset-right {
+      margin-right: -2rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .intersect-offset-right {
+      margin-right: -3rem;
+    }
+  }
+
+  .intersect-overlap-top {
+    margin-top: -2rem;
+  }
+  @media (min-width: 768px) {
+    .intersect-overlap-top {
+      margin-top: -4rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .intersect-overlap-top {
+      margin-top: -6rem;
+    }
+  }
+
+  /* Menu card hover effect */
+  .menu-card {
+    transition: all 0.3s ease-out;
+  }
+
+  .menu-card:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: var(--shadow-elevated);
+  }
+
+  /* Flavor tag styles */
+  .flavor-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.625rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: 9999px;
+    background-color: hsl(var(--primary) / 0.1);
+    color: hsl(var(--primary));
+    border: 1px solid hsl(var(--primary) / 0.2);
+  }
+
+  /* Status badge */
+  .status-open {
+    background-color: rgb(34 197 94 / 0.2);
+    color: rgb(21 128 61);
+    border-color: rgb(34 197 94 / 0.3);
+  }
+
+  .status-closed {
+    background-color: rgb(239 68 68 / 0.2);
+    color: rgb(185 28 28);
+    border-color: rgb(239 68 68 / 0.3);
+  }
+}
+
+@layer utilities {
+  /* Animation utilities for intersecting theme */
+  .animate-slide-in-left {
+    animation: slideInLeft 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-slide-in-up {
+    animation: slideInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-slide-in-down {
+    animation: slideInDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
