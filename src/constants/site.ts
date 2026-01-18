@@ -31,8 +31,8 @@ export const siteConfig = {
   },
   
   location: {
-    googleMapsUrl: "https://goo.gl/maps/ferkoYSw5qQQvfX58",
-    googleMapsEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.8174!2d109.3425!3d-0.0265!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMDDCsDAxJzM1LjQiUyAxMDnCsDIwJzMzLjAiRQ!5e0!3m2!1sen!2sid!4v1705000000000",
+    googleMapsUrl: "https://www.google.com/maps?q=-0.0429831,109.3271878",
+    googleMapsEmbed: "https://maps.google.com/maps?q=-0.0429831,109.3271878&z=17&output=embed",
     address: {
       city: "Pontianak",
       region: "West Kalimantan, Indonesia",
