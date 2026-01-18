@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { LazyMotion, domAnimation, m, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { siteConfig } from "@/constants/site";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
@@ -34,85 +34,89 @@ const Navbar = () => {
       };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-sm" aria-label="Main navigation">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <motion.a
-            href="#"
-            {...animationProps}
-            className="flex items-center gap-3"
-            aria-label={`${siteConfig.name} - Back to top`}
-          >
-            <Image
-              src={siteConfig.images.logo}
-              alt={`${siteConfig.name} logo`}
-              width={48}
-              height={48}
-              className="h-10 md:h-12 w-auto rounded"
-            />
-            <span className="font-serif text-xl md:text-2xl font-semibold text-primary-foreground tracking-tight">
-              {siteConfig.name}
-            </span>
-          </motion.a>
+    <LazyMotion features={domAnimation}>
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-sm" aria-label="Main navigation">
+        <div className="container mx-auto px-4 md:px-8">
+          <div className="flex items-center justify-between h-16 md:h-20">
+            {/* Logo */}
+            <m.a
+              href="#"
+              {...animationProps}
+              className="flex items-center gap-3"
+              aria-label={`${siteConfig.name} - Back to top`}
+            >
+              <Image
+                src={siteConfig.images.logo}
+                alt={`${siteConfig.name} logo`}
+                width={48}
+                height={48}
+                placeholder="blur"
+                blurDataURL={siteConfig.images.logoBlur}
+                className="h-10 md:h-12 w-auto rounded"
+              />
+              <span className="font-serif text-xl md:text-2xl font-semibold text-primary-foreground tracking-tight">
+                {siteConfig.name}
+              </span>
+            </m.a>
 
-          {/* Desktop Nav */}
-          <motion.div
-            {...desktopNavAnimationProps}
-            className="hidden md:flex items-center gap-8"
-          >
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-primary-foreground/80 hover:text-primary-foreground font-sans text-sm font-medium tracking-wide transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-          </motion.div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-primary-foreground"
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isOpen}
-            aria-controls="mobile-menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Nav */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            id="mobile-menu"
-            initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, height: 0 }}
-            className="md:hidden bg-primary border-t border-primary-foreground/10"
-            role="menu"
-          >
-            <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
+            {/* Desktop Nav */}
+            <m.div
+              {...desktopNavAnimationProps}
+              className="hidden md:flex items-center gap-8"
+            >
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-primary-foreground/80 hover:text-primary-foreground font-sans text-base font-medium py-2 transition-colors"
-                  role="menuitem"
+                  className="text-primary-foreground/80 hover:text-primary-foreground font-sans text-sm font-medium tracking-wide transition-colors"
                 >
                   {link.label}
                 </a>
               ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
+            </m.div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden p-2 text-primary-foreground"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Nav */}
+        <AnimatePresence>
+          {isOpen && (
+            <m.div
+              id="mobile-menu"
+              initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, height: 0 }}
+              className="md:hidden bg-primary border-t border-primary-foreground/10"
+              role="menu"
+            >
+              <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="text-primary-foreground/80 hover:text-primary-foreground font-sans text-base font-medium py-2 transition-colors"
+                    role="menuitem"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </m.div>
+          )}
+        </AnimatePresence>
+      </nav>
+    </LazyMotion>
   );
 };
 
