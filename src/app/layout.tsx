@@ -75,10 +75,10 @@ export const metadata: Metadata = {
     },
   },
 
-  // Verification (add your IDs when available)
-  // verification: {
-  //   google: "your-google-verification-id",
-  // },
+  // Verification
+  verification: {
+    google: "SBJZyaHRCPxu35cj80ruE1y5-Ca255Z5X1vNkCQPDNM",
+  },
 
   // Category
   category: "food & drink",
