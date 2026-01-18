@@ -31,8 +31,8 @@ export const siteConfig = {
   },
   
   location: {
-    googleMapsUrl: "https://www.google.com/maps/place/Silang+Coffee/@-0.0442545,109.3286523,14z/data=!4m7!3m6!1s0x2e1d59f3b0447aa5:0x9a337acfa5ac2772!4b1!8m2!3d-0.0429831!4d109.3271878!16s%2Fg%2F11qg4k5p8x?hl=en-ID&entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D",
-    googleMapsEmbed: "https://maps.google.com/maps?q=-0.0429831,109.3271878&z=17&output=embed",
+    googleMapsUrl: "https://www.google.com/maps/place/Silang+Coffee/@-0.0429777,109.3246075,17z/data=!3m1!4b1!4m6!3m5!1s0x2e1d59f3b0447aa5:0x9a337acfa5ac2772!8m2!3d-0.0429831!4d109.3271878!16s%2Fg%2F11qg4k5p8x?hl=en-US&entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D",
+    googleMapsEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.8171978985943!2d109.3246075102697!3d-0.04297773553020355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e1d59f3b0447aa5%3A0x9a337acfa5ac2772!2sSilang%20Coffee!5e0!3m2!1sen!2sus!4v1768727710965!5m2!1sen!2sus",
     address: {
       city: "Pontianak",
       region: "West Kalimantan, Indonesia",
