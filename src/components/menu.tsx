@@ -38,14 +38,6 @@ const Menu = () => {
         transition: { duration: 0.3 },
       };
 
-  const itemAnimationProps = (index: number) =>
-    prefersReducedMotion
-      ? {}
-      : {
-          initial: { opacity: 0, y: 20 },
-          animate: { opacity: 1, y: 0 },
-          transition: { duration: 0.4, delay: index * 0.1 },
-        };
 
   return (
     <LazyMotion features={domAnimation}>
@@ -93,53 +85,54 @@ const Menu = () => {
             ))}
           </m.div>
 
-          {/* Menu Items */}
-          <AnimatePresence mode="wait">
-            <m.div
-              key={activeTab}
-              {...contentAnimationProps}
-              role="tabpanel"
-              id={`tabpanel-${activeTab}`}
-              aria-labelledby={`tab-${activeTab}`}
-              className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
-            >
-              {activeCategory?.items.map((item, index) => (
-                <m.article
-                  key={item.name}
-                  {...itemAnimationProps(index)}
-                  className={`menu-card p-5 md:p-6 rounded-xl border bg-card shadow-soft ${
-                    item.isSignature ? "ring-2 ring-accent/50" : ""
-                  }`}
-                >
-                  <div className="flex justify-between items-start mb-3">
-                    <div>
-                      <h3 className="font-serif text-xl font-semibold text-card-foreground">
-                        {item.name}
-                      </h3>
-                      {item.isSignature && (
-                        <span className="text-xs font-sans font-medium text-accent uppercase tracking-wider">
-                          Signature
-                        </span>
-                      )}
-                    </div>
-                    <span className="font-sans text-lg font-semibold text-card-foreground" aria-label={`Price: ${item.price}`}>
-                      {item.price}
-                    </span>
-                  </div>
-                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                    {item.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2" role="list" aria-label="Flavor notes">
-                    {item.tags.map((tag) => (
-                      <span key={tag} className="flavor-tag" role="listitem">
-                        {tag}
+          {/* Menu Items: wrap with stable min-height to avoid layout jumps */}
+          <div className="min-h-[400px]">
+            <AnimatePresence initial={false} mode="wait">
+              <m.div
+                key={activeTab}
+                {...contentAnimationProps}
+                role="tabpanel"
+                id={`tabpanel-${activeTab}`}
+                aria-labelledby={`tab-${activeTab}`}
+                className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
+              >
+                {activeCategory?.items.map((item) => (
+                  <article
+                    key={`${activeTab}-${item.name}`}
+                    className={`menu-card p-5 md:p-6 rounded-xl border bg-card shadow-soft ${
+                      item.isSignature ? "ring-2 ring-accent/50" : ""
+                    }`}
+                  >
+                    <div className="flex justify-between items-start mb-3">
+                      <div>
+                        <h3 className="font-serif text-xl font-semibold text-card-foreground">
+                          {item.name}
+                        </h3>
+                        {item.isSignature && (
+                          <span className="text-xs font-sans font-medium text-accent uppercase tracking-wider">
+                            Signature
+                          </span>
+                        )}
+                      </div>
+                      <span className="font-sans text-lg font-semibold text-card-foreground" aria-label={`Price: ${item.price}`}>
+                        {item.price}
                       </span>
-                    ))}
-                  </div>
-                </m.article>
-              ))}
-            </m.div>
-          </AnimatePresence>
+                    </div>
+                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                      {item.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2" role="list" aria-label="Flavor notes">
+                      {item.tags.map((tag) => (
+                        <span key={tag} className="flavor-tag" role="listitem">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </article>
+                ))}
+              </m.div>
+            </AnimatePresence>
+          </div>
         </div>
       </section>
     </LazyMotion>
