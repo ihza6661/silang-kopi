@@ -10,6 +10,10 @@ export const metadata: Metadata = {
     default: "Silang Kopi | Premium Coffee in Pontianak",
     template: "%s | Silang Kopi",
   },
+  icons: {
+    icon: "/images/silang-kopi-logo.jpg",
+    apple: "/images/silang-kopi-logo.jpg",
+  },
   description:
     "Between coffee and productivity. Single-origin beans, signature blends, and local flavors in Pontianak. Open daily 09:00–23:00.",
   keywords: [
