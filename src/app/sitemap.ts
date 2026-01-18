@@ -5,7 +5,7 @@ import type { MetadataRoute } from 'next';
  * @see https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://silangkopi.com';
+  const baseUrl = 'https://silang.kopi.ihza.me';
   
   return [
     {
