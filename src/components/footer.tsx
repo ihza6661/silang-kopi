@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { LazyMotion, domAnimation, m } from "framer-motion";
 import { MapPin, Navigation, Phone, Clock, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -153,9 +154,18 @@ const Footer = () => {
               </div>
 
               {/* Copyright */}
-              <div className="pt-8 border-t border-border">
+              <div className="pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
                 <p className="text-muted-foreground text-sm">
                   © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+                </p>
+                <p className="text-muted-foreground text-sm">
+                  Made by{" "}
+                  <Link
+                    href="/pengembang"
+                    className="text-primary hover:underline font-medium transition-colors"
+                  >
+                    @ihza_baker
+                  </Link>
                 </p>
               </div>
             </m.div>

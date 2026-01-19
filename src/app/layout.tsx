@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Providers } from "@/components/providers";
+import { DemoBanner } from "@/components/demo-banner";
+import Navbar from "@/components/navbar";
 
 const baseUrl = "https://silangkopi.com";
 
@@ -105,7 +107,11 @@ export default function RootLayout({
   return (
     <html lang="id">
       <body>
-        <Providers>{children}</Providers>
+        <Providers>
+          <DemoBanner />
+          <Navbar />
+          {children}
+        </Providers>
       </body>
     </html>
   );
